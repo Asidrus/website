@@ -6,5 +6,5 @@ run:
 	docker run \
 		--rm \
 		--net=host \
-		website \
-		--name='website'
+		--name='website' \
+		website
