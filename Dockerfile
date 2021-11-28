@@ -5,3 +5,4 @@ RUN conda env create -f req.yml
 RUN echo "source activate site" > ~/.bashrc
 ENV PATH /opt/conda/envs/site/bin:$PATH
 COPY . .
+RUN python manage.py 80.87.200.64:443
