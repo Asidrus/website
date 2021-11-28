@@ -1,5 +1,6 @@
 FROM continuumio/miniconda3
 WORKDIR /home/tester/website/
+EXPOSE 433
 COPY req.yml ./
 RUN conda env create -f req.yml
 RUN echo "source activate site" > ~/.bashrc

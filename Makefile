@@ -7,5 +7,4 @@ run:
 		--rm \
 		--net=host \
 		website \
-		bash -c \
-		"python manage.py runserver 80.87.200.64:443"
+		--name='website'
