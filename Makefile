@@ -7,4 +7,7 @@ run:
 		--rm \
 		--net=host \
 		--name='website' \
+		-d \
 		website
+stop:
+	docker stop website
