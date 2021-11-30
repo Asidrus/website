@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+<p>Сайт</p>
+<div class="message" id="success_div"></div>
+<form id="parser" method="post" action="request/">
+    <input class="site" value="Submit feedback" name="site">
+    <input class="password"
+    <button id="form" width="120px" heigth="30px">Парсить</button>
+
+    {% csrf_token %}
+</form>
+
+
+{% endblock %}
