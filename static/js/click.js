@@ -17,19 +17,20 @@ function getCookie(name) {
 
 const button = document.getElementById('post-btn');
 
-
-function ajax_post() {
-    var form = $('#parser').serialize();
-    var site = document.getElementsByClassName('site')[0].value;
-    $.ajax({
-        url: 'request/',
-        type: "POST",
-        data: site,
-        dataType: 'text',
-        success: function (data) {
-            $('#success').html(data)
-        }
+$(document).ready(function() {
+    $('#parser').submit(function() { // On form submit event
+        $.ajax({ // create an AJAX call...
+            data: $(this).serialize(), // get the form data
+            type: $(this).attr('method'), // GET or POST
+            url: $(this).attr('action'), // the file to call
+            success: function(response) { // on success..
+//                alert(response.message)
+                $('#success_div').html(response.message); // update the DIV
+            },
+            error: function(e, x, r) { // on error..
+                $('#error_div').html(e); // update the DIV
+            }
+        });
+        return false;
     });
-    return false;
-}
-button.addEventListener('click', ajax_post)
+});

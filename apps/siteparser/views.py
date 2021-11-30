@@ -1,5 +1,7 @@
+import json
+
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 
 def index(request):
@@ -7,5 +9,9 @@ def index(request):
 
 
 def handler(request):
-    print(request.POST)
-    return HttpResponse("ok")
+    if request.method == "POST":
+        print(request.POST)
+        # return HttpResponse(json.dumps({'message': 'ok'}))
+        return JsonResponse({"message": 'ok'})
+    else:
+        return render(request, "index.html", {"data": "error"})
