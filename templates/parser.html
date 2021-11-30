@@ -4,7 +4,12 @@
 
 <br>
 <p>Сайт</p>
-<input>
-<button onclick="click" width="120px" heigth="30px">Парсить</button>
+<form id="parser" method="post" action="request/">
+    <input class="site">
+    <button id="post-btn" width="120px" heigth="30px">Парсить</button>
+    <p id="success"></p>
+    {% csrf_token %}
+</form>
+
 
 {% endblock %}

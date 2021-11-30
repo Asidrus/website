@@ -1,15 +1,35 @@
-console.log("work")
-var xhr = new XMLHttpRequest();
-xhr.open("POST", '/server', true);
-
-//Send the proper header information along with the request
-xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-xhr.onreadystatechange = function() { // Call a function when the state changes.
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        // Request finished. Do processing here.
+// using jQuery
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
+    return cookieValue;
 }
-xhr.send("foo=bar&lorem=ipsum");
-// xhr.send(new Int8Array());
-// xhr.send(document);
+
+const button = document.getElementById('post-btn');
+
+
+function ajax_post() {
+    var form = $('#parser').serialize();
+    var site = document.getElementsByClassName('site')[0].value;
+    $.ajax({
+        url: 'request/',
+        type: "POST",
+        data: site,
+        dataType: 'text',
+        success: function (data) {
+            $('#success').html(data)
+        }
+    });
+    return false;
+}
+button.addEventListener('click', ajax_post)
