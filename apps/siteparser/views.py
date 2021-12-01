@@ -9,8 +9,10 @@ def index(request):
 
 
 def handler(request):
+    if request.user.is_authenticated:
+        pass
     if request.method == "POST":
-        print(request.POST)
+        print(request.POST['site'])
         # return HttpResponse(json.dumps({'message': 'ok'}))
         return JsonResponse({"message": 'ok'})
     else:

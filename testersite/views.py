@@ -2,13 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
+Title = 'это тайтл, Таня!!!'
+
 
 def index(request):
-    if request.user.is_authenticated:
-        return render(request, "index.html", {'user': False})
-    else:
-        return render(request, "index.html", {'user': True})
-    # return HttpResponse("hello world")
+    return render(request, "index.html", {'user': request.user, 'Title': Title})
 
 
 def auth(request):

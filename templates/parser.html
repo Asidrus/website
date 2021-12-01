@@ -2,8 +2,8 @@
 {%load static %}
 {% block content %}
 
-<br>
 
+{% if user.is_authenticated %}
 <div class="message" id="success_div"></div>
 <form id="parser" method="post" action="request/">
     <p>Сайт</p>
@@ -14,6 +14,8 @@
 
     {% csrf_token %}
 </form>
-
+{% else %}
+<p>Авторизуйтесь</p>
+{% endif %}
 
 {% endblock %}
