@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{Title}}</title>
+    <link rel="shortcut icon" href="{%static '/img/qa-logo.jpg' %}" sizes="16x16">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    {%load static %}
+
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/content.css' %}">
@@ -16,7 +18,7 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 <header>
-    <div class="content">
+    <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a href="/">
                 <img src="{%static '/img/qa-logo.jpg' %}">
@@ -77,7 +79,7 @@
     </div>
 </header>
 
-<div class="content mt-5" style="display: flex; justify-content: center;">
+<div class="content mt-5">
     {% block content %}{% endblock %}
 </div>
 <script src="{% static 'js/click.js' %}"></script>
