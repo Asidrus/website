@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
@@ -22,4 +23,6 @@ urlpatterns = [
     path('parser/', include("siteparser.urls")),
     path('', views.index, name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('change-password/', auth_views.PasswordChangeView.as_view()),
+    path('login/', auth_views.LoginView.as_view())
 ]
