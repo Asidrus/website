@@ -9,4 +9,14 @@
   padding: 0 15px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.bg-light{
+  background-color: #badbad!important;
+}
+.btn-outline-success {
+    color: #0062cc;
+    border-color: #0062cc;
 }

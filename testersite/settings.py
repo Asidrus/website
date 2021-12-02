@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 
-# APPS_DIR = BASE_DIR / "apps"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -69,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -127,6 +127,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, '../aioparser-results/')
+MEDIA_ROOT = '/home/kali/aioparser-results'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
