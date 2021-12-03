@@ -130,7 +130,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, '../aioparser-results/')
-MEDIA_ROOT = '/home/kali/aioparser-results'
+MEDIA_ROOT = '/storage/aioparser/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
