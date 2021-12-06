@@ -1,4 +1,4 @@
-name: site
+name: website
 channels:
   - defaults
 dependencies:
@@ -28,4 +28,4 @@ dependencies:
     - django==3.2.9
     - pytz==2021.3
     - sqlparse==0.4.2
-prefix: /home/kali/anaconda3/envs/site
+prefix: /home/kali/anaconda3/envs/website

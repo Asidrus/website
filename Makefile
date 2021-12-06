@@ -1,13 +1,18 @@
+#!make
+include .env
+export $(shell sed 's/=.*//' .env)
+args=$(shell cat .env | sed 's@^@--build-arg @g' | paste -s -d " ")
 build:
-	docker build . --tag website
+	docker build ${args} . --tag ${PROJECT}
 remove:
-	docker rmi -f website
+	docker rmi -f ${PROJECT}
 run:
 	docker run \
+		-d \
 		--rm \
 		--net=host \
-		--name='website' \
-		-d \
-		website
+		--name=${PROJECT} \
+		-v ${STORAGE}${PROJECT}:${STORAGE} \
+		${PROJECT}
 stop:
-	docker stop website
+	docker stop ${PROJECT}

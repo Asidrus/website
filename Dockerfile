@@ -1,9 +1,15 @@
 FROM continuumio/miniconda3
-WORKDIR /home/tester/website/
-EXPOSE 433
+ARG path=/app
+ARG PROJECT='project'
+ARG STORAGE='/storage/'
+WORKDIR $path/$PROJECT
+RUN mkdir -m 777 $STORAGE
 COPY req.yml ./
 RUN conda env create -f req.yml
-RUN echo "source activate site" > ~/.bashrc
-ENV PATH /opt/conda/envs/site/bin:$PATH
+RUN echo "source activate $PROJECT" > ~/.bashrc
+ENV PATH /opt/conda/envs/$PROJECT/bin:$PATH
 COPY . .
-CMD python manage.py runserver 80.87.200.64:443
+ENV IP 'localhost'
+ENV PORT 443
+CMD [ "python", "manage.py", "runserver", "${IP}:${PORT}"]
+#CMD python manage.py runserver ${IP}:${PORT}
