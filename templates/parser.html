@@ -16,15 +16,21 @@
     {% csrf_token %}
 </form>
 <br>
-<table>
-{% for rec in records%}
-<tr>
-    <td>{{rec.datetime}}</td>
-    <td>{{rec.site}}</td>
-    <td>{{rec.patterns}}</td>
-    <td><a href="{{ MEDIA_URL }}{{rec.fileName}}" target="_blank">ссылка</a></td>
-</tr>
-{% endfor %}
+<table style="table-parser">
+    <tr>
+        <td>Дата/время</td>
+        <td>Сайт</td>
+        <td>Паттерны</td>
+        <td>Ссылка на результат</td>
+    </tr>
+    {% for rec in records%}
+    <tr>
+        <td>{{rec.datetime}}</td>
+        <td>{{rec.site}}</td>
+        <td>{{rec.patterns}}</td>
+        <td><a href="{{ MEDIA_URL }}{{rec.fileName}}" target="_blank">ссылка</a></td>
+    </tr>
+    {% endfor %}
 </table>
 {% else %}
 <p>Авторизуйтесь</p>

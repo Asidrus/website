@@ -5,6 +5,7 @@ from time import sleep
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import Parser
+from libs.network import Client
 
 
 def index(request):
@@ -19,23 +20,22 @@ def handler(request):
     if request.user.is_authenticated:
         pass
     if request.method == "POST":
-        print(request.POST['site'])
-        __request__ = request
-        from libs.network import Client
-        data = {'site': request.POST['site'], 'patterns': request.POST['patterns'].split(','), 'adaptive': 'False'}
-        client = Client('localhost', 9087, handler=responseHeader)
-        asyncio.run(client.send(content=data))
-        record = Parser(fileName=fname, userID=request.user,
-                   patterns=request.POST['patterns'], site=request.POST['site'])
-        record.save()
-        rec = Parser.objects.filter(userID=request.user)
-        print({"message": 'ok', 'records': rec})
-        return JsonResponse({"message": 'ok'})
+        try:
+            print(request.POST)
+            data = {'site': request.POST['site'], 'patterns': request.POST['patterns'].split(','), 'adaptive': 'False'}
+            client = Client('localhost', 9087, handler=responseHeader)
+            asyncio.run(client.send(content=data))
+            record = Parser(fileName=fname, userID=request.user,
+                       patterns=request.POST['patterns'], site=request.POST['site'])
+            record.save()
+            return JsonResponse(
+                {"message": f' будет доступен по <a href="/media/{fname}" target="_blank">ссылке</a> через 3-5 минут'})
+        except Exception as e:
+            return JsonResponse({"data": "e"})
     else:
-        return render(request, "index.html", {"data": "error"})
+        return JsonResponse({"data": "error"})
 
 
 async def responseHeader(**kwargs):
     global fname
     fname = kwargs['content']['data'] + ".json"
-    print(fname)
