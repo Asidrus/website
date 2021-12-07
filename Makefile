@@ -10,7 +10,7 @@ run:
 	docker run \
 		-d \
 		--rm \
-		--net=host \
+		-p ${IP}:${PORT}:443 \
 		--name=${PROJECT} \
 		-v ${STORAGE}${PROJECT}:${STORAGE} \
 		${PROJECT}

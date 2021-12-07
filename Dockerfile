@@ -9,7 +9,4 @@ RUN conda env create -f req.yml
 RUN echo "source activate $PROJECT" > ~/.bashrc
 ENV PATH /opt/conda/envs/$PROJECT/bin:$PATH
 COPY . .
-ENV IP 'localhost'
-ENV PORT 443
-CMD [ "python", "manage.py", "runserver", "${IP}:${PORT}"]
-#CMD python manage.py runserver ${IP}:${PORT}
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:443"]
