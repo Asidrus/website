@@ -1,7 +1,7 @@
 #!make
 include .env
 export $(shell sed 's/=.*//' .env)
-args=$(shell cat .env | sed 's@^@--build-arg @g' | paste -s -d " ")
+args=$(shell cat .env | grep -v SECRET_KEY | sed 's@^@--build-arg @g' | paste -s -d " ")
 build:
 	docker build ${args} . --tag ${PROJECT}
 remove:
