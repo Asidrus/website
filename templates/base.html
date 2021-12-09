@@ -17,7 +17,7 @@
 <!--  -->
 <link rel="stylesheet" href="{% static 'css/count-particles.css' %}">
 <div id="ny-22-particles-js">
-    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1303" height="850">
+    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1440" height="850">
 </div>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="{% static 'js/particles.js' %}"></script>
@@ -29,7 +29,7 @@
 <header>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="/">
+            <a class="mr-5" href="/">
                 <img src="{%static '/img/qa-logo.jpg' %}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -45,8 +45,10 @@
                     <!--            </li>-->
                     <li class="nav-item">
                         <div class="logos logo">
-                            <img src="{%static '/img/jenkins-logo.png' %}">
-                            <a href="http://80.87.200.64:8181/" target="_blank">Jenkins</a>
+                            <a href="http://80.87.200.64:8181/" target="_blank">
+                                <img src="{%static '/img/jenkins-logo.png' %}">
+                                Jenkins
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item">
