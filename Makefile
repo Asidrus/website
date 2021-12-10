@@ -12,7 +12,7 @@ run:
 		--rm \
 		-p ${IP}:${PORT}:443 \
 		--name=${PROJECT} \
-		-v ${STORAGE}${PROJECT}:${STORAGE} \
+		-v ${STORAGE}${PROJECT}/static:/app/${PROJECT}/static \
 		${PROJECT}
 stop:
 	docker stop ${PROJECT}
