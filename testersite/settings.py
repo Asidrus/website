@@ -26,8 +26,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') is not None
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "testersite/static"]
+STATIC_ROOT = BASE_DIR / "static"
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_ROOT = '/storage/aioparser/'
 sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
