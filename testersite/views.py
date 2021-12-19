@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
-Title = 'это тайтл, Таня!!!'
+Title = 'QA gaps'
 
 
 def index(request):
