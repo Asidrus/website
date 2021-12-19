@@ -24,4 +24,4 @@ ENV PATH /opt/conda/envs/website/bin:$PATH
 COPY . .
 #ENTRYPOINT ["/app/website/entrypoint.sh"]
 #CMD [ "python", "manage.py", "runserver", "0.0.0.0:443"]
-CMD [ "gunicorn", "--bind", "0.0.0.0:8080", "testersite.wsgi"]
+CMD [ "gunicorn", "--bind", "0.0.0.0:8000", "testersite.wsgi"]
