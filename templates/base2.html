@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static %}
+    <title>{{Title}}</title>
+</head>
+<body>
+
+    <header>
+        <p>header</p>
+        <img src="{% static '/img/men.jpeg' %}">
+        <img src="{% static '/img/kote.jpeg' %}">
+    </header>
+    {% block content %}{% endblock %}
+</body>
+</html>

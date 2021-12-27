@@ -1,2 +1,5 @@
 /static
 .idea
+.gitignore
+.env_local
+__pycache__
