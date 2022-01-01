@@ -3,6 +3,21 @@
 
 {% block content %}
 
-<p>Привет</p>
 
+<aside></aside>
+<section>
+    <input type="text" value="Hello World" id="myInput">
+
+    <!-- The button used to copy the text -->
+    <button onclick="copy()">Copy text</button>
+
+
+</section>
+<section>
+{% autoescape off %}
+    {{ page }}
+{% endautoescape %}
+</section>
+
+<script src="{% static '/js/copyToClipboard.js' %}"></script>
 {% endblock %}
