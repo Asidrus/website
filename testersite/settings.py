@@ -18,7 +18,7 @@ import os, sys
 from dotenv import load_dotenv
 
 load_dotenv('.env')
-ENV_LOCAL = '.env_local'
+ENV_LOCAL = './.env_local'
 if os.path.isfile(ENV_LOCAL):
     load_dotenv(ENV_LOCAL)
 
@@ -43,6 +43,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'siteparser.apps.SiteparserConfig',
     'documentation.apps.DocumentationConfig'
+    'checklist.apps.ChecklistConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

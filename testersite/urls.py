@@ -28,5 +28,6 @@ urlpatterns = [
     path('change-password/', auth_views.PasswordChangeView.as_view()),
     path('login/', auth_views.LoginView.as_view()),
     path('logout/', auth_views.LogoutView.as_view()),
+    path('web-developer-checklist/', include("checklist.urls")),
     path('documentation/', include("documentation.urls")),
 ]  # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
