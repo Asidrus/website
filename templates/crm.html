@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block content %}
+
+<div class="container">
+    <form id="crm" method="post" action="update/">
+        {% csrf_token %}
+        <div>Месяц</div>
+        <div class="row-month">
+            <select name="month">
+                {% for month in months %}
+                <option value="{{ month }}">{{ month }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row-project">
+            <select name="project">
+                {% for project in projects %}
+                <option value="{{ project }}">{{ project }}</option>
+                {% endfor %}
+            </select>
+            <div class="row-phone">
+                <input type="text" class="phone" name="phone" placeholder="Телефон">
+            </div>
+            <div class="row-fullname">
+                <input type="text" class="name" name="name" placeholder="ФИО">
+            </div>
+            <div class="row-fullname">
+                <input type="text" class="email" name="email" placeholder="email">
+            </div>
+            <div class="row-button">
+                <button id="request">Обновить</button>
+            </div>
+    </form>
+</div>
+<div class="container">
+    {% for order in orders %}
+    <div class="row-order">
+        <div class="row-datetime">{{ order.datetime }}</div>
+        <div class="row-project">{{ order.project }}</div>
+        <div class="row-name">{{ order.name }}</div>
+        <div class="row-phone">{{ order.phone }}</div>
+        <div class="row-email">{{ order.email }}</div>
+        <div class="row-product">{{ order.product }}</div>
+    </div>
+    {% endfor %}
+</div>
+<script src="{% static 'js/crm.js' %}"></script>
+{% endblock %}

@@ -43,6 +43,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'siteparser.apps.SiteparserConfig',
     'documentation.apps.DocumentationConfig',
+    'crm.apps.CrmConfig',
     'checklist.apps.ChecklistConfig',
     'ckeditor',
     'django_summernote',
