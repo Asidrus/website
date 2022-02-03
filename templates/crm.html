@@ -1,49 +1,56 @@
 {% extends 'base.html' %}
 {%load static %}
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/crm.css' %}">
 <div class="container">
     <form id="crm" method="post" action="update/">
         {% csrf_token %}
-        <div>Месяц</div>
-        <div class="row-month">
+        <div class="form-item" style="font-size: 18px; color: #fff;">Месяц</div>
+        <div class="row-month form-item">
             <select name="month">
                 {% for month in months %}
                 <option value="{{ month }}">{{ month }}</option>
                 {% endfor %}
             </select>
         </div>
-        <div class="row-project">
+        <div class="form-item" style="font-size: 18px; color: #fff;">Проект</div>
+        <div class="row-project form-item">
             <select name="project">
                 {% for project in projects %}
                 <option value="{{ project }}">{{ project }}</option>
                 {% endfor %}
             </select>
-            <div class="row-phone">
-                <input type="text" class="phone" name="phone" placeholder="Телефон">
+        </div>
+        <div class="row-fullname form-item">
+            <input type="text" class="name" name="name" placeholder="ФИО">
+        </div>
+        <div class="row-phone form-item">
+            <input type="text" class="phone" name="phone" placeholder="Телефон">
+        </div>
+        <div class="row-fullname form-item">
+            <input type="text" class="email" name="email" placeholder="email">
+        </div>
+        <div class="row-tester form-item">
+            <input type="checkbox" id="test" name="test" style="font-size: 110%;"checked>
+            <div class="ml-2" style="font-size: 18px; color: #fff;">Тест</div>
+        </div>
+        <div class="row-branch form-item">
+            <div class="row-radio">
+                <input type="radio" id="prod" name="branch" value="prod" checked>
+                <div class="ml-1">prod</div>
             </div>
-            <div class="row-fullname">
-                <input type="text" class="name" name="name" placeholder="ФИО">
+            <div class="row-radio">
+                <input type="radio" id="dev" name="branch" value="dev">
+                <div class="ml-1">dev</div>
             </div>
-            <div class="row-fullname">
-                <input type="text" class="email" name="email" placeholder="email">
-            </div>
-            <div class="row-button">
-                <button id="request">Обновить</button>
-            </div>
+        </div>
+        <div class="row-button form-item">
+            <button id="request">Обновить</button>
+        </div>
     </form>
 </div>
-<div class="container">
-    {% for order in orders %}
-    <div class="row-order">
-        <div class="row-datetime">{{ order.datetime }}</div>
-        <div class="row-project">{{ order.project }}</div>
-        <div class="row-name">{{ order.name }}</div>
-        <div class="row-phone">{{ order.phone }}</div>
-        <div class="row-email">{{ order.email }}</div>
-        <div class="row-product">{{ order.product }}</div>
-    </div>
-    {% endfor %}
-</div>
 <script src="{% static 'js/crm.js' %}"></script>
+<div id="results">
+</div>
+
 {% endblock %}

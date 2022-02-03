@@ -1,51 +1,46 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-# Create your views here.
+from django.template import loader
+from datetime import datetime, timedelta
 
-import requests
+from .lib.crm import getOrders
+from .models import CRM
 
 
 def index(request):
-    # page = Page.objects.filter(id=1)
-    # print(page)
-
-    orders = [
-        {
-            "name": "Антон",
-            "email": "tester_form@gaps.edu.ru",
-            "phone": "81234567890",
-            "datetime": "2022-02-01 09:24:20",
-            "project": "adpo",
-            "product": "Младший фармацевт (340ч)"
-        },
-        {
-            "name": "Антон",
-            "email": "tester_form@gaps.edu.ru",
-            "phone": "81234567890",
-            "datetime": "2022-02-01 09:24:20",
-            "project": "adpo",
-            "product": "Младший фармацевт (340ч)"
-        }
-    ]
-
+    now = datetime.now()
+    prev = now - timedelta(days=31)
     return render(request, "crm.html",
                   {
                       "title": "crm",
                       "error": "ошибка",
-                      "months": ["02.2022", "03.2022"],
-                      "projects": ["penta", "mult", "psy"],
-                      "orders": orders
+                      "months": [now.strftime("%Y-%m"), prev.strftime("%Y-%m")],
+                      "projects": [project.name for project in CRM.objects.all()],
                   })
 
 
 def update(request):
     if request.method == "POST":
         try:
-            print(request.POST)
-            # data = {'site': request.POST['site'], 'patterns': request.POST['patterns'].split(','), 'adaptive': 'False'}
-
-            return JsonResponse()
+            project = CRM.objects.filter(name=request.POST["project"])
+            orders = getOrders(
+                url=project[0].url if request.POST["branch"] == 'prod' else project[0].url.replace("//", "//dev-"),
+                PHPSSID=project[0].prod if request.POST["branch"] == 'prod' else project[0].dev,
+                project=request.POST["project"],
+                month=request.POST["month"],
+                name=request.POST['name'],
+                phone=request.POST['phone'],
+                email=request.POST['email'],
+                manager=project[0].manager if 'test' in request.POST.keys() else "-1"
+            )
+            # print(orders)
+            return JsonResponse(
+                {
+                    'data': loader.render_to_string('crm2.html', {"orders": orders}, request)
+                }
+            )
         except Exception as e:
-            return JsonResponse({"data": "e"})
+            print(e)
+            return JsonResponse({"data": str(e), 'error': 'True'})
     else:
-        return JsonResponse({"data": "error"})
+        return JsonResponse({"data": "Метод только POST"})

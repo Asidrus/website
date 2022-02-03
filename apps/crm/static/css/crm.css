@@ -1,0 +1,72 @@
+form{
+display: flex;
+flex-flow: row;
+
+}
+
+.form-item{
+display: flex;
+padding: 5px 5px 5px 5px;
+}
+
+select{
+width: 100px;
+}
+
+input{
+max-width: 100%;
+height: 100%;
+}
+
+.orders{
+max-width: 1440;
+margin-top: 10px;
+}
+
+.row-order{
+display: flex;
+flex-flow: row;
+background: #212121;
+border: 1px solid #ffffff;
+}
+
+.row-table{
+border: 1px solid #f3f3f3;
+padding: 5px 5px 5px 5px;
+font-size: 14px;
+}
+
+.row-datetime{
+width: 15%;
+}
+
+.row-school{
+width: 7%;
+}
+
+.row-name{
+width: 10%;
+}
+
+.row-phone{
+width: 10%;
+}
+
+.row-email{
+width: 20%;
+}
+
+.row-product{
+width: 38%;
+}
+
+.row-radio{
+display: flex;
+flex-flow: row;
+}
+
+.row-branch{
+display: flex;
+flex-flow: column;
+font-size: 10px;
+}

@@ -1,0 +1,20 @@
+<div class="container orders" id="orders">
+    <div class="row-order" style="font-size: 18px; color: #dc3545;">
+        <div class="row-datetime row-table">Дата время</div>
+        <div class="row-school row-table">УЦ</div>
+        <div class="row-name row-table">ФИО</div>
+        <div class="row-phone row-table">Телефон</div>
+        <div class="row-email row-table">Email</div>
+        <div class="row-product row-table">Продукт</div>
+    </div>
+    {% for order in orders %}
+    <div class="row-order">
+        <div class="row-datetime row-table">{{ order.datetime }}</div>
+        <div class="row-school row-table">{{ order.school }}</div>
+        <div class="row-name row-table">{{ order.name }}</div>
+        <div class="row-phone row-table">{{ order.phone }}</div>
+        <div class="row-email row-table">{{ order.email }}</div>
+        <div class="row-product row-table">{{ order.product }}</div>
+    </div>
+    {% endfor %}
+</div>
