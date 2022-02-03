@@ -26,10 +26,26 @@ dependencies:
   - zlib=1.2.11=h7b6447c_3
   - pip:
     - asgiref==3.4.1
+    - beautifulsoup4==4.10.0
+    - bleach==4.1.0
+    - bs4==0.0.1
+    - charset-normalizer==2.0.11
     - django==3.2.9
+    - django-ckeditor==6.2.0
+    - django-js-asset==1.2.2
+    - django-summernote==0.8.20.0
     - gunicorn==20.1.0
+    - idna==3.3
+    - lxml==4.7.1
+    - packaging==21.3
     - psycopg2-binary==2.9.2
+    - pyparsing==3.0.6
     - python-dotenv==0.19.2
     - pytz==2021.3
+    - requests==2.27.1
+    - six==1.16.0
+    - soupsieve==2.3.1
     - sqlparse==0.4.2
+    - urllib3==1.26.8
+    - webencodings==0.5.1
 prefix: /home/kali/anaconda3/envs/website
