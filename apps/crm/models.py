@@ -5,7 +5,8 @@ from django.db import models
 
 class CRM(models.Model):
     name = models.CharField(max_length=20)
-    url = models.TextField(verbose_name="url prod CRM")
-    prod = models.TextField(verbose_name="PHPSSID prod")
-    dev = models.TextField(verbose_name="PHPSSID dev")
-    manager = models.TextField(verbose_name="tester manager id", default='')
+    url = models.CharField(max_length=100, verbose_name="url prod CRM")
+    mrm = models.CharField(max_length=50, default='')
+    prod = models.CharField(max_length=50, verbose_name="PHPSSID prod")
+    dev = models.CharField(max_length=50, verbose_name="PHPSSID dev")
+    manager = models.CharField(max_length=10, verbose_name="tester manager id", default='')

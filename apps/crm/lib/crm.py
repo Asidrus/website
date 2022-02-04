@@ -4,7 +4,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def getOrders(url: str, PHPSSID: str, project: str, month: str, name: str = "", phone: str = "", email: str = "", manager: str="-1"):
+def getOrders(url: str, cookie: dict, project: str, month: str, name: str = "", phone: str = "", email: str = "",
+              manager: str = "-1"):
+    cookie['Content-Type']= 'text/html; charset=windows-1251'
     res = requests.post(url=url,
                         data={
                             "month": month,
@@ -16,17 +18,19 @@ def getOrders(url: str, PHPSSID: str, project: str, month: str, name: str = "", 
                             "status_id": "",
                             "manager_num": manager,
                             "phone": phone,
-                            "fio": name,
+                            "fio": name.encode('windows-1251'),
                             "email": email,
                             "source_order_num": ""
                         },
-                        cookies={"PHPSESSID": PHPSSID})
+                        cookies=cookie)
     print(res.request.body)
     soup = BeautifulSoup(res.text, "lxml")
     login = soup.find(name='input', attrs={"value": "Войти"})
     if login is None:
         data = []
         table = soup.find(name="table", attrs={"class": "bordered"})
+        if table is None:
+            return 'Таких заявок не найдено'
         rows = table.find_all(name="tr")
         count = 10 if manager == "-1" else 50
         for row in rows[:count]:
@@ -48,12 +52,17 @@ def getOrders(url: str, PHPSSID: str, project: str, month: str, name: str = "", 
             data.append(order)
         return data
     else:
-        return {"error": f"Доступы в CRM {url} устарели, обратитесь к администратору"}
+        return f"Доступы в CRM {url} устарели, обратитесь к администратору"
 
 
 def main():
-    pass
+    import io
+    hex = 'Антон'.encode('windows-1251').hex().upper()
+    print(hex)
+
+    print('%' + '%'.join([hex[2 * i:2 * i + 2] for i in range(int(len(hex) / 2))]))
+    print(bytearray.fromhex(hex.lower()).decode('windows-1251'))
 
 
 if __name__ == "__main__":
-    pass
+    main()
