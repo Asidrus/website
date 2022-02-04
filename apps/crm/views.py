@@ -22,6 +22,10 @@ def index(request):
 def update(request):
     if request.method == "POST":
         try:
+            print('test' not in request.POST.keys())
+            print(all(request.POST['name']=='', request.POST['phone']=='', request.POST['email']==''))
+            if ('test' not in request.POST.keys()) and all(request.POST['name']=='', request.POST['phone']=='', request.POST['email']==''):
+                return JsonResponse({"data": "<div>Для не тестовых заявок хотя бы одно поле (Имя, телефон, email) должно быть заполнено</div"})
             project = CRM.objects.filter(name=request.POST["project"])
             orders = getOrders(
                 url=project[0].url if request.POST["branch"] == 'prod' else project[0].url.replace("//", "//dev-"),
