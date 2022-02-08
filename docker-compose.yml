@@ -20,7 +20,8 @@ services:
       - media_volume:/app/website/mediafiles
       - nginx_volume:/app/website/nginx
     ports:
-      - 80:443
+      - 443:443
+      - 80:80
     depends_on:
       - web
 
