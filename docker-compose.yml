@@ -8,7 +8,7 @@ services:
     volumes:
       - static_volume:/app/website/static
       - media_volume:/app/website/mediafiles
-      - project_volume:/app/website/
+      - project_volume:/app/website/nginx
     expose:
       - 8000
     env_file:
@@ -18,7 +18,7 @@ services:
     volumes:
       - static_volume:/app/website/static
       - media_volume:/app/website/mediafiles
-      - project_volume:/app/website/
+      - project_volume:/app/website/nginx
     ports:
       - 80:443
     depends_on:
