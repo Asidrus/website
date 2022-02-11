@@ -11,12 +11,21 @@
 </head>
 <body>
 
-    <header id='header' class='bg-success'>
+    <header id='header' class='bg-success' >
         <div class="d-inline-flex p-2 flex-row container-fluid">
             <a href="/" alt='logo'  class="img-fluid">
                 {% comment %} <img  src="{%static '/img/logo.png' %}"> {% endcomment %}
             </a>
             <h1 class='p-2 text-white'>Web Developer Checklist</h1>
+            <select class='form-select' aria-label="Начинающий QA тестировщик">
+                {% for i in range(len(category_bloks)) %}
+                    {% for val in category_bloks %}
+                        <options value = "{{i}}">{{val}} </options>
+                        {{i=i+1}}
+                    {% endfor %}
+                {% endfor %}
+            </select >
+            <p>{{category_bloks}}</p>
         </div>
     </header>
 
