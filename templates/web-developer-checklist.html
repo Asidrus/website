@@ -1,241 +1,45 @@
 {% extends 'base2.html' %}
-{%load static %}
-
+{% load static %}
 {% block content %}
-
-<div class='container-fluid d-flex flex-wrap'>
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <ul>
-                        <li>
-                            <a href="#">Какой то заголовок с ссылкой</a>
-                        </li>
-                    </ul>
+    {% for main_block in blocks %}
+        {% if main_block.on_page %}
+            <div class='container-fluid d-flex flex-wrap'>
+                <div class='card'>
+                    <div class="card-body">
+                        <h2>{{ main_block.title_block }}</h2>
+                        <h3>Обязательный:</h3>
+                        {% for point in points %}
+                            {% if point.id_block == main_block %}
+                                <div class="form-check subtitle">
+                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault{{point.id}}"/>
+                                    <label class="form-check-label" for="flexCheckDefault{{point.id}}">{{ point.general_heading_items }}</label>
+                                    <span>
+                                        <svg stroke="currentColor"
+                                             fill="currentColor"
+                                             stroke-width="0"
+                                             viewBox="0 0 24 24"
+                                             style="width:20px;height:20px"
+                                             height="1em"
+                                             width="1em"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path>
+                                        </svg>
+                                    </span>
+                                    <div class='links'>
+                                        <ul>
+                                            <li>
+                                            {% for content in sub_items %}
+                                                {% if content.id_block == point %}<a href="{{ content.link_page }}">{{ content.title_link }}</a>{% endif %}
+                                            {% endfor %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>    
-{% comment %} 
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div  class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-            </div>
-        </div>
-    </div>     {% endcomment %}
-{% comment %} 
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <ul>
-                        <li>
-                    <a href="#">Какой то заголовок с ссылкой</a></li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <ul>
-                        <li>
-                            <a href="#">Какой то заголовок с ссылкой</a></li>
-                        </ul>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <ul>
-                        <li>
-                        <a href="#">Какой то заголовок с ссылкой</a> </li>
-                        <li><a href="#">Какой то заголовок с ссылкой</a> </li>
-                        <li><a href="#">Какой то заголовок с ссылкой</a> </li>
-                        <li> <a href="#">Какой то заголовок с ссылкой</a></li>
-                        <li> <a href="#">Какой то заголовок с ссылкой</a></li>
-                        <li> <a href="#">Какой то заголовок с ссылкой</a></li>
-                        <li> <a href="#">Какой то заголовок с ссылкой</a></li>
-                        <li> <a href="#">Какой то заголовок с ссылкой</a></li>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <ul>
-                        <li>
-                    <a href="#">Какой то заголовок с ссылкой</a></li>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>    
-
-    <div class='card'>
-        <div class="card-body">
-            <h2>Best Practices</h2>
-            <h3>Required:</h3>
-            <div>
-                <div class="form-check subtitle">
-                    <input class="form-check-input" type="checkbox"  value="" id="flexCheckDefault"/>
-                    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
-                    <span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" style="width:20px;height:20px" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></span>
-                <div class='links'>
-                    <a href="#">Какой то заголовок с ссылкой</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>     {% endcomment %}
-</div>
-{% comment %} 
-<p>Hello it's me</p> {% endcomment %}
-
-
+        {% endif %}
+    {% endfor %}
 {% endblock %}

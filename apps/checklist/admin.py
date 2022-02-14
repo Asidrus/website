@@ -7,7 +7,7 @@ class categorysAdmin(admin.ModelAdmin):
 
 @admin.register(itemName)
 class itemNameAdmin(admin.ModelAdmin):
-    list_display = ("id", "general_heading_items")
+    list_display = ("id", "general_heading_items", 'id_params')
 
 @admin.register(params)
 class paramsAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class paramsAdmin(admin.ModelAdmin):
     
 @admin.register(blocks)
 class blocksAdmin(admin.ModelAdmin):
-    list_display = ("title_block", "on_page", "id_category")
+    list_display = ("id", "title_block", "on_page", "id_category")
 
 @admin.register(pages)
 class pagesAdmin(admin.ModelAdmin):
