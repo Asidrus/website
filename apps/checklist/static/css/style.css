@@ -1,6 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 1rem;
+    background-color: #faf1e6;
 }
 .img-fluid{
     width: 4em;
@@ -10,12 +11,28 @@ body{
     border-color: white;
 }
 #header{
-    padding: 0 2% 0 2%;
+    padding: 0 5% 0 5%;
+    background-color: #3fbac7;
 }
 li {
     list-style:none;
 }
+.links {
+    display: none;
+}
 .card{
     margin: 1%;
     border-style: none;
+    box-shadow: 10px 10px 10px rgb(10 10 10 / 24%);
+}
+.svg_arrow {
+    width: 20px;
+    height: 20px;
+    color: #19337e;
+}
+.arrow:hover{
+    cursor: pointer;
+}
+.importance{
+    font-size: 1.20em;
 }

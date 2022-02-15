@@ -7,18 +7,34 @@
                 <div class='card'>
                     <div class="card-body">
                         <h2>{{ main_block.title_block }}</h2>
-                        <h3>Обязательный:</h3>
                         {% for point in points %}
+                            {% if point.id_block == main_block %}
+            
+                                    {% ifchanged %}
+
+                                        <h3 class='importance'>
+
+                                            {% for prm in param%}
+                                                {% if prm == point.id_params %}
+                                                        {{ prm.importance }}:
+                                                {% endif %}
+                                            {% endfor %}
+                                            
+                                        </h3>
+
+                                    {% endifchanged %}
+                                        
+                            {% endif %}
                             {% if point.id_block == main_block %}
                                 <div class="form-check subtitle">
                                     <input class="form-check-input" type="checkbox" id="flexCheckDefault{{point.id}}"/>
                                     <label class="form-check-label" for="flexCheckDefault{{point.id}}">{{ point.general_heading_items }}</label>
-                                    <span>
+                                    <span class="arrow">
                                         <svg stroke="currentColor"
+                                            class="svg_arrow"  
                                              fill="currentColor"
                                              stroke-width="0"
                                              viewBox="0 0 24 24"
-                                             style="width:20px;height:20px"
                                              height="1em"
                                              width="1em"
                                              xmlns="http://www.w3.org/2000/svg">

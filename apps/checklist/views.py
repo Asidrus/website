@@ -9,7 +9,7 @@ def index(request):
     category = categorys.objects.all()
     param = params.objects.all()
     block = blocks.objects.all()
-    points = itemName.objects.all()
+    points = itemName.objects.all().order_by('id_params')
     sub_items = pages.objects.all()
     return render(request, "web-developer-checklist.html",
     context={
